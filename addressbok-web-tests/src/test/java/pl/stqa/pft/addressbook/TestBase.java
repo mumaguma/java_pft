@@ -23,6 +23,10 @@ public class TestBase {
 
   @BeforeMethod
   public void setUp() throws Exception {
+    init();
+  }
+
+  private void init() {
     wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true).setBinary("C:/Users/dwi/Dropbox (QualityMinds GmbH)/_dwi/learning/_Java dla testerow/FirefoxESR/App/firefox64/Firefox.exe"));
     //wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true).setBinary("C:/Users/dwi/Dropbox (QualityMinds GmbH)/_dwi/learning/_Java dla testerow/FirefoxESR/FirefoxPortable.exe"));
     wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
@@ -67,6 +71,10 @@ public class TestBase {
 
   @AfterMethod
   public void tearDown() {
+    stop();
+  }
+
+  private void stop() {
     wd.quit();
   }
 
