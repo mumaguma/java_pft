@@ -1,7 +1,6 @@
 package pl.stqa.pft.addressbook.appmaanger;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import pl.stqa.pft.addressbook.model.ContactData;
@@ -15,27 +14,18 @@ public class ApplicationManager {
   private NavigationHelper navigationHelper;
   private GroupHelper groupHelper;
 
-  public static boolean isAlertPresent(FirefoxDriver wd) {
-    try {
-      wd.switchTo().alert();
-      return true;
-    } catch (NoAlertPresentException e) {
-      return false;
-    }
-  }
-
   public void init() {
     wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true).setBinary("C:/Users/dwi/Dropbox (QualityMinds GmbH)/_dwi/learning/_Java dla testerow/FirefoxESR/App/firefox64/Firefox.exe"));
     //wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true).setBinary("C:/Users/dwi/Dropbox (QualityMinds GmbH)/_dwi/learning/_Java dla testerow/FirefoxESR/FirefoxPortable.exe"));
     wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-    wd.get("http://localhost/addressbook/");
+    wd.get("http://localhost/addressbook/group.php");
     groupHelper = new GroupHelper(wd);
     navigationHelper = new NavigationHelper(wd);
     sessionHelper = new SessionHelper(wd);
     sessionHelper.login("admin", "secret");
   }
 
-    public void stop() {
+  public void stop() {
     wd.quit();
   }
 
