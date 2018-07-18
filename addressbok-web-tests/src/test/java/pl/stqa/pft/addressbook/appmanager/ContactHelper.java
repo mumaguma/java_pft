@@ -1,32 +1,13 @@
-package pl.stqa.pft.addressbook.appmaanger;
+package pl.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxOptions;
 import pl.stqa.pft.addressbook.model.ContactData;
 
-import java.util.concurrent.TimeUnit;
+public class ContactHelper extends BaseHelper {
 
-public class ApplicationManager {
-  FirefoxDriver wd;
-
-  private SessionHelper sessionHelper;
-  private NavigationHelper navigationHelper;
-  private GroupHelper groupHelper;
-
-  public void init() {
-    wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true).setBinary("C:/Users/dwi/Dropbox (QualityMinds GmbH)/_dwi/learning/_Java dla testerow/FirefoxESR/App/firefox64/Firefox.exe"));
-    //wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true).setBinary("C:/Users/dwi/Dropbox (QualityMinds GmbH)/_dwi/learning/_Java dla testerow/FirefoxESR/FirefoxPortable.exe"));
-    wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-    wd.get("http://localhost/addressbook/group.php");
-    groupHelper = new GroupHelper(wd);
-    navigationHelper = new NavigationHelper(wd);
-    sessionHelper = new SessionHelper(wd);
-    sessionHelper.login("admin", "secret");
-  }
-
-  public void stop() {
-    wd.quit();
+  public ContactHelper(FirefoxDriver wd) {
+    super(wd);
   }
 
   public void returnToMainPage() {
@@ -58,13 +39,5 @@ public class ApplicationManager {
 
   public void initContactCreation() {
     wd.findElement(By.linkText("add new")).click();
-  }
-
-  public GroupHelper getGroupHelper() {
-    return groupHelper;
-  }
-
-  public NavigationHelper getNavigationHelper() {
-    return navigationHelper;
   }
 }
