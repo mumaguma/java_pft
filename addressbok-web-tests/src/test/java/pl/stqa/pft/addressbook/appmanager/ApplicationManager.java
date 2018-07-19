@@ -18,7 +18,7 @@ public class ApplicationManager {
     wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true).setBinary("C:/Users/dwi/Dropbox (QualityMinds GmbH)/_dwi/learning/_Java dla testerow/FirefoxESR/App/firefox64/Firefox.exe"));
     //wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true).setBinary("C:/Users/dwi/Dropbox (QualityMinds GmbH)/_dwi/learning/_Java dla testerow/FirefoxESR/FirefoxPortable.exe"));
     wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-    wd.get("http://localhost/addressbook/group.php");
+    wd.get("http://localhost/addressbook/");
     groupHelper = new GroupHelper(wd);
     contactHelper = new ContactHelper(wd);
     navigationHelper = new NavigationHelper(wd);
