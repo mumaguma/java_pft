@@ -41,4 +41,12 @@ public class ContactHelper extends BaseHelper {
   public void clickAccept() {
     acceptbutton();
   }
+
+  public void initContactEdit(int i) {
+    click(By.xpath("//table[@id='maintable']/tbody/tr[" + i +"]/td[8]/a/img"));
+  }
+
+  public void submitGroupModification() {
+    click(By.name("update"));
+  }
 }

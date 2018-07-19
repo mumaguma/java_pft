@@ -7,7 +7,7 @@ public class GroupModificationTests extends TestBase {
 
 
   @Test
-  public void testGroupDeletion() {
+  public void testGroupModification() {
     app.getNavigationHelper().gotoGroupPage();
     app.getGroupHelper().selectGroup();
     app.getGroupHelper().initGroupModification();
