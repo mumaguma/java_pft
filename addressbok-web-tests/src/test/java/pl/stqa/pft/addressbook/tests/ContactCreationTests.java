@@ -9,7 +9,7 @@ public class ContactCreationTests  extends TestBase {
   public void testContactCreation() {
     app.getNavigationHelper().gotoContactPage();
     app.getContactHelper().initContactCreation();
-    app.getContactHelper().fillContactForm(new ContactData("Adam", "Adamowicz", "ul. Prosta 1\n00-001 Warszawa", "+48 123 456 789", "adam@wp.pl"));
+    app.getContactHelper().fillContactForm(new ContactData("Rupert", "Adamowicz", "ul. Prosta 1\n00-001 Warszawa", "+48 223 456 789", "adam@wp.pl", "test1"), true);
     app.getContactHelper().submitContactCreation();
     app.getContactHelper().returnToMainPage();
   }

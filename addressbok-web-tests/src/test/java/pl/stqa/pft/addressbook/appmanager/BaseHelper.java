@@ -2,7 +2,10 @@ package pl.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+
+import java.util.concurrent.TimeUnit;
 
 public class BaseHelper {
   protected WebDriver wd;
@@ -41,4 +44,15 @@ public class BaseHelper {
   }
 
 
+  protected boolean isElementPresent(By locator) {
+    wd.manage().timeouts().implicitlyWait(200, TimeUnit.MILLISECONDS); // added for convenience
+    try {
+      wd.findElement(locator);
+      return true;
+    } catch (NoSuchElementException ex) {
+      return false;
+    } finally {
+      wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS); // added for convenience
+    }
+  }
 }

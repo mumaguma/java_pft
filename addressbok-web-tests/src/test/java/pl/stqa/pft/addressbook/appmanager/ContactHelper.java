@@ -1,7 +1,10 @@
 package pl.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 import pl.stqa.pft.addressbook.model.ContactData;
 
 public class ContactHelper extends BaseHelper {
@@ -18,12 +21,19 @@ public class ContactHelper extends BaseHelper {
     wd.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
   }
 
-  public void fillContactForm(ContactData contactData) {
+  public void fillContactForm(ContactData contactData, boolean creation) {
     type(By.name("firstname"), contactData.getFirstName());
     type(By.name("lastname"), contactData.getLastName());
     type(By.name("address"), contactData.getStreetAddress());
     type(By.name("home"), contactData.getPhoneHome());
     type(By.name("email"), contactData.getEmail());
+
+    if(creation) {
+      new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+    } else {
+      Assert.assertFalse(isElementPresent(By.name("new_group")));
+    }
+
   }
 
   public void initContactCreation() {
@@ -43,7 +53,7 @@ public class ContactHelper extends BaseHelper {
   }
 
   public void initContactEdit(int i) {
-    click(By.xpath("//table[@id='maintable']/tbody/tr[" + i +"]/td[8]/a/img"));
+    click(By.xpath("//table[@id='maintable']/tbody/tr[" + i + "]/td[8]/a/img"));
   }
 
   public void submitGroupModification() {
