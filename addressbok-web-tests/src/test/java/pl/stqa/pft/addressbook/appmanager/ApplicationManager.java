@@ -27,7 +27,7 @@ public class ApplicationManager {
   }
 
   public void init() {
-    if (browser == BrowserType.FIREFOX){
+    if (browser.equals(BrowserType.FIREFOX)){
       wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true).setBinary("C:/Users/dwi/Dropbox (QualityMinds GmbH)/_dwi/learning/_Java dla testerow/FirefoxESR/App/firefox64/Firefox.exe"));
     } else if (browser.equals(BrowserType.CHROME)) {
       wd = new ChromeDriver();
