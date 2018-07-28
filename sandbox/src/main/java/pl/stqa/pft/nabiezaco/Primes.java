@@ -13,7 +13,7 @@ public class Primes {
   }
 
   public static boolean isPrime(long n) {
-    int sqr = (int) Math.sqrt(n);
+    long sqr = (long) Math.sqrt(n);
     for (long i = 2; i <= sqr; i++ ){
       if (n % i == 0) {
         return false;
