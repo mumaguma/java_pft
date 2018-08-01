@@ -45,14 +45,14 @@ public class BaseHelper {
 
 
   protected boolean isElementPresent(By locator) {
-    wd.manage().timeouts().implicitlyWait(200, TimeUnit.MILLISECONDS); // added for convenience
+//    wd.manage().timeouts().implicitlyWait(200, TimeUnit.MILLISECONDS); // added for convenience
     try {
       wd.findElement(locator);
       return true;
     } catch (NoSuchElementException ex) {
       return false;
-    } finally {
-      wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS); // added for convenience
+//    } finally {
+//      wd.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS); // added for convenience
     }
   }
 }
