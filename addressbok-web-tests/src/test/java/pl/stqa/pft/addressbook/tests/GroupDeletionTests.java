@@ -3,6 +3,7 @@ package pl.stqa.pft.addressbook.tests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pl.stqa.pft.addressbook.model.GroupData;
+
 import java.util.List;
 
 public class GroupDeletionTests extends TestBase {
@@ -23,6 +24,6 @@ public class GroupDeletionTests extends TestBase {
 
     before.remove(before.size()-1);
     Assert.assertEquals(after, before);
-
   }
+
 }

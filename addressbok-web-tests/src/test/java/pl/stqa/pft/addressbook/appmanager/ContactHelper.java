@@ -2,9 +2,13 @@ package pl.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import pl.stqa.pft.addressbook.model.ContactData;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ContactHelper extends BaseHelper {
 
@@ -62,12 +66,40 @@ public class ContactHelper extends BaseHelper {
   public boolean isThereAContact() {
     return isElementPresent(By.name("selected[]"));
   }
-  
-  public void createNewContact(ContactData contactData, boolean creation){
+
+  public void createNewContact(ContactData contactData, boolean creation) {
     initContactCreation();
     fillContactForm(contactData, creation);
     submitContactCreation();
     returnToMainPage();
   }
+
+  public List<ContactData> getContactList() {
+    List<ContactData> contacts = new ArrayList<ContactData>();
+    List<WebElement> elements = wd.findElements(By.name("entry"));
+    for (WebElement row : elements) {
+      int id = Integer.parseInt(row.findElement(By.tagName("input")).getAttribute("value"));
+      List<WebElement> tabCells = row.findElements(By.tagName("td"));
+      String lastName = tabCells.get(1).getText();
+      String firstName = tabCells.get(2).getText();
+      ContactData contact = new ContactData(id, firstName, lastName, null, null, null, null);
+      contacts.add(contact);
+    }
+    return contacts;
+  }
+
+
+//  public List<GroupData> getGroupList() {
+//    List<GroupData> groups = new ArrayList<GroupData>();
+//    List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));
+//    for (WebElement element : elements) {
+//      String name = element.getText();
+//      int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
+//      GroupData group = new GroupData(id, name, null, null);
+//      groups.add(group);
+//    }
+//    return groups;
+//  }
+
 }
 
