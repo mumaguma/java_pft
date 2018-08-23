@@ -8,7 +8,7 @@ import pl.stqa.pft.addressbook.model.GroupData;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GroupHelper extends BaseHelper{
+public class GroupHelper extends BaseHelper {
 
   public GroupHelper(WebDriver wd) {
     super(wd);

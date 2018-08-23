@@ -9,6 +9,7 @@ import pl.stqa.pft.addressbook.model.ContactData;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class ContactHelper extends BaseHelper {
 
@@ -17,6 +18,7 @@ public class ContactHelper extends BaseHelper {
   }
 
   public void returnToMainPage() {
+    wd.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
     wd.findElement(By.id("content")).click();
   }
 
@@ -43,8 +45,12 @@ public class ContactHelper extends BaseHelper {
     wd.findElement(By.linkText("add new")).click();
   }
 
-  public void selectContact() {
-    click(By.name("selected[]"));
+//  public void selectContact() {
+//    click(By.name("selected[]"));
+//  }
+
+  public void selectContact(int i) {
+    click(By.xpath("//input[@id='" + i + "']"));
   }
 
   public void submitContactDeletion() {
@@ -56,7 +62,7 @@ public class ContactHelper extends BaseHelper {
   }
 
   public void initContactEdit(int i) {
-    click(By.xpath("//table[@id='maintable']/tbody/tr[" + i + "]/td[8]/a/img"));
+    click(By.xpath("//table[@id='maintable']/tbody/tr[" + (i + 1) + "]/td[8]/a/img"));
   }
 
   public void submitGroupModification() {
