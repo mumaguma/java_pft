@@ -33,7 +33,6 @@ public class BaseHelper {
     wd.switchTo().alert().accept();
   }
 
-
   public boolean isAlertPresent() {
     try {
       wd.switchTo().alert();
@@ -42,7 +41,6 @@ public class BaseHelper {
       return false;
     }
   }
-
 
   protected boolean isElementPresent(By locator) {
 //    wd.manage().timeouts().implicitlyWait(200, TimeUnit.MILLISECONDS); // added for convenience

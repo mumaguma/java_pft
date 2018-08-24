@@ -80,6 +80,13 @@ public class ContactHelper extends BaseHelper {
     returnToMainPage();
   }
 
+  public void modifyContact(int changeIndex, ContactData contact) {
+    initContactEdit(changeIndex);
+    fillContactForm(contact, false);
+    submitGroupModification();
+    returnToMainPage();
+  }
+
   public List<ContactData> getContactList() {
     List<ContactData> contacts = new ArrayList<ContactData>();
     List<WebElement> elements = wd.findElements(By.name("entry"));
