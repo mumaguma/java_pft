@@ -45,11 +45,11 @@ public class ContactHelper extends BaseHelper {
     wd.findElement(By.linkText("add new")).click();
   }
 
-//  public void selectContact() {
+//  public void select() {
 //    click(By.name("selected[]"));
 //  }
 
-  public void selectContact(int i) {
+  public void select(int i) {
     click(By.xpath("//input[@id='" + i + "']"));
   }
 
@@ -65,7 +65,7 @@ public class ContactHelper extends BaseHelper {
     click(By.xpath("//table[@id='maintable']/tbody/tr[" + (i + 1) + "]/td[8]/a/img"));
   }
 
-  public void submitGroupModification() {
+  public void submitContactModification() {
     click(By.name("update"));
   }
 
@@ -73,21 +73,28 @@ public class ContactHelper extends BaseHelper {
     return isElementPresent(By.name("selected[]"));
   }
 
-  public void createNewContact(ContactData contactData, boolean creation) {
+  public void create(ContactData contactData, boolean creation) {
     initContactCreation();
     fillContactForm(contactData, creation);
     submitContactCreation();
     returnToMainPage();
   }
 
-  public void modifyContact(int changeIndex, ContactData contact) {
+  public void modify(int changeIndex, ContactData contact) {
     initContactEdit(changeIndex);
     fillContactForm(contact, false);
-    submitGroupModification();
+    submitContactModification();
     returnToMainPage();
   }
 
-  public List<ContactData> getContactList() {
+  public void delete(int deleteId) {
+    app.contact().select(deleteId);
+    app.contact().submitContactDeletion();
+    app.contact().clickAccept();
+    app.contact().returnToMainPage();
+  }
+
+  public List<ContactData> list() {
     List<ContactData> contacts = new ArrayList<ContactData>();
     List<WebElement> elements = wd.findElements(By.name("entry"));
     for (WebElement row : elements) {
@@ -101,18 +108,6 @@ public class ContactHelper extends BaseHelper {
     return contacts;
   }
 
-
-//  public List<GroupData> getGroupList() {
-//    List<GroupData> groups = new ArrayList<GroupData>();
-//    List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));
-//    for (WebElement element : elements) {
-//      String name = element.getText();
-//      int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-//      GroupData group = new GroupData(id, name, null, null);
-//      groups.add(group);
-//    }
-//    return groups;
-//  }
 
 }
 
