@@ -88,10 +88,10 @@ public class ContactHelper extends BaseHelper {
   }
 
   public void delete(int deleteId) {
-    app.contact().select(deleteId);
-    app.contact().submitContactDeletion();
-    app.contact().clickAccept();
-    app.contact().returnToMainPage();
+   select(deleteId);
+   submitContactDeletion();
+   clickAccept();
+   returnToMainPage();
   }
 
   public List<ContactData> list() {
@@ -102,8 +102,7 @@ public class ContactHelper extends BaseHelper {
       List<WebElement> tabCells = row.findElements(By.tagName("td"));
       String lastName = tabCells.get(1).getText();
       String firstName = tabCells.get(2).getText();
-      ContactData contact = new ContactData(id, firstName, lastName, null, null, null, null);
-      contacts.add(contact);
+      contacts.add(new ContactData().withId(id).withFirstName(firstName).withLastName(lastName));
     }
     return contacts;
   }
