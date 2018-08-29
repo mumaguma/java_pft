@@ -8,7 +8,9 @@ import org.testng.Assert;
 import pl.stqa.pft.addressbook.model.ContactData;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 public class ContactHelper extends BaseHelper {
@@ -45,10 +47,6 @@ public class ContactHelper extends BaseHelper {
     wd.findElement(By.linkText("add new")).click();
   }
 
-//  public void select() {
-//    click(By.name("selected[]"));
-//  }
-
   public void select(int i) {
     click(By.xpath("//input[@id='" + i + "']"));
   }
@@ -62,7 +60,7 @@ public class ContactHelper extends BaseHelper {
   }
 
   public void initContactEdit(int i) {
-    click(By.xpath("//table[@id='maintable']/tbody/tr[" + (i + 1) + "]/td[8]/a/img"));
+    click(By.xpath("//a[@href='edit.php?id=" + i + "']"));
   }
 
   public void submitContactModification() {
@@ -80,18 +78,18 @@ public class ContactHelper extends BaseHelper {
     returnToMainPage();
   }
 
-  public void modify(int changeIndex, ContactData contact) {
-    initContactEdit(changeIndex);
+  public void modify(ContactData contact) {
+    initContactEdit(contact.getId());
     fillContactForm(contact, false);
     submitContactModification();
     returnToMainPage();
   }
 
-  public void delete(int deleteId) {
-   select(deleteId);
-   submitContactDeletion();
-   clickAccept();
-   returnToMainPage();
+  public void delete(ContactData contact) {
+    select(contact.getId());
+    submitContactDeletion();
+    clickAccept();
+    returnToMainPage();
   }
 
   public List<ContactData> list() {
@@ -107,6 +105,17 @@ public class ContactHelper extends BaseHelper {
     return contacts;
   }
 
-
+  public Set<ContactData> all() {
+    Set<ContactData> contacts= new HashSet<ContactData>();
+    List<WebElement> elements = wd.findElements(By.name("entry"));
+    for (WebElement row : elements) {
+      int id = Integer.parseInt(row.findElement(By.tagName("input")).getAttribute("value"));
+      List<WebElement> tabCells = row.findElements(By.tagName("td"));
+      String lastName = tabCells.get(1).getText();
+      String firstName = tabCells.get(2).getText();
+      contacts.add(new ContactData().withId(id).withFirstName(firstName).withLastName(lastName));
+    }
+    return contacts;
+  }
 }
 
