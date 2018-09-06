@@ -3,11 +3,13 @@ package pl.stqa.pft.addressbook.model;
 import java.util.Objects;
 
 public class ContactData {
-  private int id  = Integer.MAX_VALUE;
+  private int id = Integer.MAX_VALUE;
   private String firstName;
   private String lastName;
   private String streetAddress;
   private String phoneHome;
+  private String phoneMobile;
+  private String phoneWork;
   private String email;
   private String group;
 
@@ -30,6 +32,15 @@ public class ContactData {
   public String getPhoneHome() {
     return phoneHome;
   }
+
+  public String getPhoneMobile() {
+    return phoneMobile;
+  }
+
+  public String getPhoneWork() {
+    return phoneWork;
+  }
+
 
   public String getEmail() {
     return email;
@@ -54,13 +65,8 @@ public class ContactData {
     return this;
   }
 
-   public ContactData withStreetAddress(String streetAddress) {
+  public ContactData withStreetAddress(String streetAddress) {
     this.streetAddress = streetAddress;
-    return this;
-  }
-
-  public ContactData withPhoneHome(String phoneHome) {
-    this.phoneHome = phoneHome;
     return this;
   }
 
@@ -71,6 +77,21 @@ public class ContactData {
 
   public ContactData withGroup(String group) {
     this.group = group;
+    return this;
+  }
+
+  public ContactData withPhoneHome(String phoneHome) {
+    this.phoneHome = phoneHome;
+    return this;
+  }
+
+  public ContactData withPhoneMobile(String phoneMobile) {
+    this.phoneMobile = phoneMobile;
+    return this;
+  }
+
+  public ContactData withPhoneWork(String phoneWork) {
+    this.phoneWork = phoneWork;
     return this;
   }
 
