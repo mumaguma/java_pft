@@ -112,9 +112,9 @@ public class ContactHelper extends BaseHelper {
       List<WebElement> tabCells = row.findElements(By.tagName("td"));
       String lastName = tabCells.get(1).getText();
       String firstName = tabCells.get(2).getText();
-      String[] phones = tabCells.get(5).getText().split("\n");
+      String allPhones = tabCells.get(5).getText();
       contactCache.add(new ContactData().withId(id).withFirstName(firstName).withLastName(lastName)
-              .withPhoneHome(phones[0]).withPhoneMobile(phones[1]).withPhoneWork(phones[2]));
+              .withAllPhones(allPhones));
     }
     return new Contacts(contactCache);
   }
