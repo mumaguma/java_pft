@@ -6,8 +6,10 @@ public class ContactData {
   private int id = Integer.MAX_VALUE;
   private String firstName;
   private String lastName;
+  private String middleName;
   private String streetAddress;
   private String phoneHome;
+  private String phoneHomeTwo;
   private String phoneMobile;
   private String phoneWork;
   private String allPhones;
@@ -16,6 +18,20 @@ public class ContactData {
   private String email3;
   private String group;
   private String allEmails;
+  private String nickname;
+  private String title;
+  private String company;
+  private String fax;
+  private String homepage;
+  private String bday;
+  private String bmonth;
+  private String byear;
+  private String aday;
+  private String amonth;
+  private String ayear;
+  private String address2;
+  private String notes;
+
 
   public int getId() {
     return id;
@@ -27,6 +43,10 @@ public class ContactData {
 
   public String getLastName() {
     return lastName;
+  }
+
+  public String getMiddleName() {
+    return middleName;
   }
 
   public String getStreetAddress() {
@@ -43,6 +63,10 @@ public class ContactData {
 
   public String getPhoneWork() {
     return phoneWork;
+  }
+
+  public String getPhoneHomeTwo() {
+    return phoneHomeTwo;
   }
 
   public String getEmail() {
@@ -69,6 +93,58 @@ public class ContactData {
     return allEmails;
   }
 
+  public String getNickname() {
+    return nickname;
+  }
+
+  public String getTitle() {
+    return title;
+  }
+
+  public String getCompany() {
+    return company;
+  }
+
+  public String getFax() {
+    return fax;
+  }
+
+  public String getHomepage() {
+    return homepage;
+  }
+
+  public String getBday() {
+    return bday;
+  }
+
+  public String getBmonth() {
+    return bmonth;
+  }
+
+  public String getByear() {
+    return byear;
+  }
+
+  public String getAday() {
+    return aday;
+  }
+
+  public String getAmonth() {
+    return amonth;
+  }
+
+  public String getAyear() {
+    return ayear;
+  }
+
+  public String getAddress2() {
+    return address2;
+  }
+
+  public String getNotes() {
+    return notes;
+  }
+
   public ContactData withId(int id) {
     this.id = id;
     return this;
@@ -81,6 +157,11 @@ public class ContactData {
 
   public ContactData withLastName(String lastName) {
     this.lastName = lastName;
+    return this;
+  }
+
+  public ContactData withMiddleName(String middleName) {
+    this.middleName = middleName;
     return this;
   }
 
@@ -124,6 +205,11 @@ public class ContactData {
     return this;
   }
 
+  public ContactData withPhoneHomeTwo(String phoneHomeTwo) {
+    this.phoneHomeTwo = phoneHomeTwo;
+    return this;
+  }
+
   public ContactData withAllPhones(String allPhones) {
     this.allPhones = allPhones;
     return this;
@@ -131,6 +217,71 @@ public class ContactData {
 
   public ContactData withAllEmails(String allEmails) {
     this.allEmails = allEmails;
+    return this;
+  }
+
+  public ContactData withNickname(String nickname) {
+    this.nickname = nickname;
+    return this;
+  }
+
+  public ContactData withTitle(String title) {
+    this.title = title;
+    return this;
+  }
+
+  public ContactData withCompany(String company) {
+    this.company = company;
+    return this;
+  }
+
+  public ContactData withFax(String fax) {
+    this.fax = fax;
+    return this;
+  }
+
+  public ContactData withHomepage(String homepage) {
+    this.homepage = homepage;
+    return this;
+  }
+
+  public ContactData withBday(String bday) {
+    this.bday = bday;
+    return this;
+  }
+
+  public ContactData withBmonth(String bmonth) {
+    this.bmonth = bmonth;
+    return this;
+  }
+
+  public ContactData withByear(String byear) {
+    this.byear = byear;
+    return this;
+  }
+
+  public ContactData withAday(String aday) {
+    this.aday = aday;
+    return this;
+  }
+
+  public ContactData withAmonth(String amonth) {
+    this.amonth = amonth;
+    return this;
+  }
+
+  public ContactData withAyear(String ayear) {
+    this.ayear = ayear;
+    return this;
+  }
+
+  public ContactData withAddress2(String address2) {
+    this.address2 = address2;
+    return this;
+  }
+
+  public ContactData withNotes(String notes) {
+    this.notes = notes;
     return this;
   }
 

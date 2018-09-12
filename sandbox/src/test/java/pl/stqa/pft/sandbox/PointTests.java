@@ -1,4 +1,4 @@
-package pl.stqa.pft.sandbox;
+package pl.stqa.pft.nabiezaco;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;

@@ -7,12 +7,11 @@ import pl.stqa.pft.addressbook.model.Contacts;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.testng.Assert.assertEquals;
 
 public class ContactDeletionTests extends TestBase {
 
   @BeforeMethod
-  public void ensurePreconditions(){
+  public void ensurePreconditions() {
     app.goTo().contactPage();
     if (app.contact().all().size() == 0) {
       app.contact().create(new ContactData().withFirstName("Delete").withLastName("me").withStreetAddress("a").withPhoneHome("123").withEmail("mailx@me.com").withGroup("test1"), true);
@@ -24,7 +23,7 @@ public class ContactDeletionTests extends TestBase {
     Contacts before = app.contact().all();
     ContactData deletedContact = before.iterator().next();
     app.contact().delete(deletedContact);
-    assertThat(app.contact().count(), equalTo(before.size()-1));
+    assertThat(app.contact().count(), equalTo(before.size() - 1));
     Contacts after = app.contact().all();
     assertThat(after, equalTo(before.without(deletedContact)));
   }

@@ -24,10 +24,8 @@ public class ContactAddressTests extends TestBase {
     app.goTo().contactPage();
     ContactData contact = app.contact().all().iterator().next();
     app.contact().initContactEdit(contact.getId());
-    ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);;
+    ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
     assertThat(contact.getStreetAddress(), equalTo(contactInfoFromEditForm.getStreetAddress()));
-
   }
-
 
 }
