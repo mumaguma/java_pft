@@ -101,7 +101,7 @@ public class ContactDataGenerator {
               .withTitle(String.format("testtitle%s", i))
               .withCompany(String.format("testcorp %s", i))
               .withFax(String.format("9999999%s", i))
-//              .withHomepage(String.format("http://page%s.com/", i))
+              .withHomepage(String.format("http://page%s.com/", i))
               .withBday(String.valueOf(i % 28))
               .withBmonth(monthName[i % 12])
               .withByear(String.format("19%s%s", i % 10, i % 10))
