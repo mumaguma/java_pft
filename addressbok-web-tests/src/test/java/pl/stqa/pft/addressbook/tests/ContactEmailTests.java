@@ -19,8 +19,12 @@ public class ContactEmailTests extends TestBase {
   public void ensurePreconditions() {
     app.goTo().contactPage();
     if (app.contact().all().size() == 0) {
-      app.contact().create(new ContactData().withFirstName("Precreated").withLastName("Entry").withStreetAddress("a")
-              .withPhoneHome("123").withEmail("mailx@me.com").withGroup("test1"), true);
+      app.contact().create(new ContactData().withFirstName(app.propReader("precondition.contact.name"))
+              .withLastName(app.propReader("precondition.contact.lastname"))
+              .withStreetAddress(app.propReader("precondition.contact.address"))
+              .withPhoneHome(app.propReader("precondition.contact.phone"))
+              .withEmail(app.propReader("precondition.contact.email"))
+              .withGroup(app.propReader("precondition.contact.group")), true);
     }
   }
 

@@ -15,7 +15,12 @@ public class ContactModificationTests extends TestBase {
   public void ensurePreconditions() {
     app.goTo().contactPage();
     if (app.contact().all().size() == 0) {
-      app.contact().create(new ContactData().withFirstName("Precreated").withLastName("Entry").withStreetAddress("a").withPhoneHome("123").withEmail("mailx@me.com").withGroup("test1"), true);
+      app.contact().create(new ContactData().withFirstName(app.propReader("precondition.contact.name"))
+              .withLastName(app.propReader("precondition.contact.lastname"))
+              .withStreetAddress(app.propReader("precondition.contact.address"))
+              .withPhoneHome(app.propReader("precondition.contact.phone"))
+              .withEmail(app.propReader("precondition.contact.email"))
+              .withGroup(app.propReader("precondition.contact.group")), true);
     }
   }
 
@@ -23,7 +28,13 @@ public class ContactModificationTests extends TestBase {
   public void testContactModification() {
     Contacts before = app.contact().all();
     ContactData modifiedContact = before.iterator().next();
-    ContactData contact = new ContactData().withId(modifiedContact.getId()).withFirstName("Marcin").withLastName("Myś").withStreetAddress("Wielbarska 2").withPhoneHome("551122322").withEmail("mailxyz@me.com").withGroup("test1");
+    ContactData contact = new ContactData().withId(modifiedContact.getId())
+            .withFirstName(app.propReader("modified.contact.name"))
+            .withLastName(app.propReader("modified.contact.lastname"))
+            .withStreetAddress(app.propReader("modified.contact.address"))
+            .withPhoneHome(app.propReader("modified.contact.phone"))
+            .withEmail(app.propReader("modified.contact.email"))
+            .withGroup(app.propReader("modified.contact.group"));
     app.contact().modify(contact);
     assertThat(app.contact().count(), equalTo(before.size()));
     Contacts after = app.contact().all();
