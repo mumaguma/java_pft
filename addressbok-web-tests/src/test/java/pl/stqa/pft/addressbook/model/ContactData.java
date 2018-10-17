@@ -119,6 +119,7 @@ public class ContactData {
   @XStreamOmitField
   @Column(name="photo")
   @Type(type = "text")
+//  @Transient
   private String photo;
 
   public int getId() {
@@ -402,27 +403,53 @@ public class ContactData {
   }
 
   @Override
-  public String toString() {
-    return "ContactData{" +
-            "id=" + id +
-            ", firstName='" + firstName + '\'' +
-            ", lastName='" + lastName + '\'' +
-            '}';
-  }
-
-  @Override
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     ContactData that = (ContactData) o;
     return id == that.id &&
             Objects.equals(firstName, that.firstName) &&
-            Objects.equals(lastName, that.lastName);
+            Objects.equals(lastName, that.lastName) &&
+            Objects.equals(middleName, that.middleName) &&
+            Objects.equals(streetAddress, that.streetAddress) &&
+            Objects.equals(phoneHome, that.phoneHome) &&
+            Objects.equals(phoneHomeTwo, that.phoneHomeTwo) &&
+            Objects.equals(phoneMobile, that.phoneMobile) &&
+            Objects.equals(phoneWork, that.phoneWork) &&
+            Objects.equals(email, that.email) &&
+            Objects.equals(email2, that.email2) &&
+            Objects.equals(email3, that.email3) &&
+            Objects.equals(group, that.group) &&
+            Objects.equals(nickname, that.nickname) &&
+            Objects.equals(title, that.title) &&
+            Objects.equals(company, that.company) &&
+            Objects.equals(fax, that.fax) &&
+            Objects.equals(homepage, that.homepage) &&
+            Objects.equals(bdayAsByte, that.bdayAsByte) &&
+            Objects.equals(bmonth, that.bmonth) &&
+            Objects.equals(byear, that.byear) &&
+            Objects.equals(adayAsByte, that.adayAsByte) &&
+            Objects.equals(amonth, that.amonth) &&
+            Objects.equals(ayear, that.ayear) &&
+            Objects.equals(address2, that.address2) &&
+            Objects.equals(notes, that.notes) &&
+            Objects.equals(photo, that.photo);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, firstName, lastName);
+    return Objects.hash(id, firstName, lastName, middleName, streetAddress, phoneHome, phoneHomeTwo, phoneMobile,
+            phoneWork, email, email2, email3, group, nickname, title, company, fax, homepage,
+            bdayAsByte, bmonth, byear, adayAsByte, amonth, ayear, address2, notes, photo);
+  }
+
+  @Override
+  public String toString() {
+    return "ContactData{" +
+            "id=" + id +
+            ", firstName='" + firstName + '\'' +
+            ", lastName='" + lastName + '\'' +
+            '}';
   }
 
 }

@@ -15,8 +15,10 @@ public class ContactPhoneTests extends TestBase {
 
   @BeforeMethod
   public void ensurePreconditions() {
-    app.goTo().contactPage();
-    if (app.contact().all().size() == 0) {
+//    app.goTo().contactPage();
+//    if (app.contact().all().size() == 0) {
+    if(app.db().contacts().size() == 0){
+      app.goTo().contactPage();
       app.contact().create(new ContactData().withFirstName(app.propReader("precondition.contact.name"))
               .withLastName(app.propReader("precondition.contact.lastname"))
               .withStreetAddress(app.propReader("precondition.contact.address"))
