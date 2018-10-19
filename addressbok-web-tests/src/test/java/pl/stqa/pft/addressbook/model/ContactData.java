@@ -420,22 +420,18 @@ public class ContactData {
             Objects.equals(phoneHomeTwo, that.phoneHomeTwo) &&
             Objects.equals(phoneMobile, that.phoneMobile) &&
             Objects.equals(phoneWork, that.phoneWork) &&
-            Objects.equals(allPhones, that.allPhones) &&
             Objects.equals(email, that.email) &&
             Objects.equals(email2, that.email2) &&
             Objects.equals(email3, that.email3) &&
-            Objects.equals(allEmails, that.allEmails) &&
             Objects.equals(nickname, that.nickname) &&
             Objects.equals(title, that.title) &&
             Objects.equals(company, that.company) &&
             Objects.equals(fax, that.fax) &&
             Objects.equals(homepage, that.homepage) &&
             Objects.equals(bday, that.bday) &&
-            Objects.equals(bdayAsByte, that.bdayAsByte) &&
             Objects.equals(bmonth, that.bmonth) &&
             Objects.equals(byear, that.byear) &&
             Objects.equals(aday, that.aday) &&
-            Objects.equals(adayAsByte, that.adayAsByte) &&
             Objects.equals(amonth, that.amonth) &&
             Objects.equals(ayear, that.ayear) &&
             Objects.equals(address2, that.address2) &&
@@ -445,31 +441,40 @@ public class ContactData {
 
   @Override
   public int hashCode() {
-    if (firstName.equals("")) firstName = null;
-    if (lastName.equals("")) lastName = null;
-    if (middleName.equals("")) middleName = null;
-    if (streetAddress.equals("")) streetAddress = null;
-    if (phoneHome.equals("")) phoneHome = null;
-    if (phoneHomeTwo.equals("")) phoneHomeTwo = null;
-    if (phoneMobile.equals("")) phoneMobile = null;
-    if (phoneWork.equals("")) phoneWork = null;
-    if (email.equals("")) email = null;
-    if (email2.equals("")) email2 = null;
-    if (email3.equals("")) email3 = null;
-    if (nickname.equals("")) nickname = null;
-    if (title.equals("")) title = null;
-    if (company.equals("")) company = null;
-    if (fax.equals("")) fax = null;
-    if (homepage.equals("")) homepage = null;
-    if (bday.equals("0")) bday = null;
-    if (bmonth.equals("-")) bmonth = null;
-    if (byear.equals("")) byear = null;
-    if (aday.equals("0")) aday = null;
-    if (amonth.equals("-")) amonth = null;
-    if (ayear.equals("")) ayear = null;
-    if (address2.equals("")) address2 = null;
-    if (notes.equals("")) notes = null;
-    if (photo.equals("")) photo = null;
+    if (firstName == null) {  firstName = "";}
+    if (lastName == null) { lastName = "";}
+    if (middleName == null) { middleName = "";}
+    if (streetAddress == null) { streetAddress = "";}
+    if (phoneHome == null) { phoneHome = "";}
+    if (phoneMobile == null) { phoneMobile = "";}
+    if (phoneWork == null) { phoneWork = "";}
+    if (email == null) { email = "";}
+    if (phoneHomeTwo == null) { phoneHomeTwo = "";}
+    if (email2 == null) { email2 = "";}
+    if (email3 == null) { email3 = "";}
+    if (nickname == null) { nickname = "";}
+    if (title == null) { title = "";}
+    if (company == null) { company = "";}
+    if (fax == null) { fax = "";}
+    if (homepage == null) { homepage = "";}
+    if (bday == "0") { bday = "";}
+    if (bday == null) { bday = "";}
+    if (bmonth == "-") { bmonth = "";}
+    if (bmonth == null) { bmonth = "";}
+    if (byear == null) { byear = "";}
+    if (aday == "0") { aday = "";}
+    if (aday == null) { aday = "";}
+    if (amonth == "-") { amonth = "";}
+    if (amonth == null) { amonth = "";}
+    if (ayear == null) { ayear = "";}
+    if (address2 == null) { address2 = "";}
+    if (notes == null) { notes = "";}
+    if (photo == null) { photo = "";}
+    group = "";
+    bdayAsByte = 0;
+    adayAsByte = 0;
+    allPhones = "";
+    allEmails = "";
 
     return Objects.hash(id, firstName, lastName, middleName, streetAddress, phoneHome, phoneHomeTwo, phoneMobile,
             phoneWork, email, email2, email3, nickname, title, company, fax, homepage,
