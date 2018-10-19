@@ -1,0 +1,80 @@
+<list>
+  <contact>
+    <firstName>TestnameF 0</firstName>
+    <lastName>TestnameL 0</lastName>
+    <middleName>I0</middleName>
+    <streetAddress>Test Street 0</streetAddress>
+    <phoneHome>12312310</phoneHome>
+    <phoneHomeTwo>12312310</phoneHomeTwo>
+    <phoneMobile>12312310</phoneMobile>
+    <phoneWork>12312310</phoneWork>
+    <email>def0@stu0.com</email>
+    <email2>bcd0@xyz0.com</email2>
+    <email3>abd0@zxc0.com</email3>
+    <group>test</group>
+    <nickname>testnick0</nickname>
+    <title>testtitle0</title>
+    <company>testcorp 0</company>
+    <fax>99999990</fax>
+    <bday>0</bday>
+    <bmonth>January</bmonth>
+    <byear>1900</byear>
+    <aday>0</aday>
+    <amonth>December</amonth>
+    <ayear>2010</ayear>
+    <address2>addresstwo 0</address2>
+    <notes>notes 0</notes>
+  </contact>
+  <contact>
+    <firstName>TestnameF 1</firstName>
+    <lastName>TestnameL 1</lastName>
+    <middleName>I1</middleName>
+    <streetAddress>Test Street 1</streetAddress>
+    <phoneHome>12312311</phoneHome>
+    <phoneHomeTwo>12312311</phoneHomeTwo>
+    <phoneMobile>12312311</phoneMobile>
+    <phoneWork>12312311</phoneWork>
+    <email>def1@stu1.com</email>
+    <email2>bcd1@xyz1.com</email2>
+    <email3>abd1@zxc1.com</email3>
+    <group>test</group>
+    <nickname>testnick1</nickname>
+    <title>testtitle1</title>
+    <company>testcorp 1</company>
+    <fax>99999991</fax>
+    <bday>1</bday>
+    <bmonth>February</bmonth>
+    <byear>1911</byear>
+    <aday>1</aday>
+    <amonth>November</amonth>
+    <ayear>2011</ayear>
+    <address2>addresstwo 1</address2>
+    <notes>notes 1</notes>
+  </contact>
+  <contact>
+    <firstName>TestnameF 2</firstName>
+    <lastName>TestnameL 2</lastName>
+    <middleName>I2</middleName>
+    <streetAddress>Test Street 2</streetAddress>
+    <phoneHome>12312312</phoneHome>
+    <phoneHomeTwo>12312312</phoneHomeTwo>
+    <phoneMobile>12312312</phoneMobile>
+    <phoneWork>12312312</phoneWork>
+    <email>def2@stu2.com</email>
+    <email2>bcd2@xyz2.com</email2>
+    <email3>abd2@zxc2.com</email3>
+    <group>test</group>
+    <nickname>testnick2</nickname>
+    <title>testtitle2</title>
+    <company>testcorp 2</company>
+    <fax>99999992</fax>
+    <bday>2</bday>
+    <bmonth>March</bmonth>
+    <byear>1922</byear>
+    <aday>2</aday>
+    <amonth>October</amonth>
+    <ayear>2012</ayear>
+    <address2>addresstwo 2</address2>
+    <notes>notes 2</notes>
+  </contact>
+</list>
