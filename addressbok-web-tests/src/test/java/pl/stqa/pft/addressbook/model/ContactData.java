@@ -16,53 +16,53 @@ import java.util.Objects;
 public class ContactData {
   @XStreamOmitField
   @Id
-  @Column(name="id")
+  @Column(name = "id")
   private int id = Integer.MAX_VALUE;
   @Expose
-  @Column(name="firstname")
+  @Column(name = "firstname")
   @Type(type = "string")
   private String firstName;
   @Expose
-  @Column(name="lastname")
+  @Column(name = "lastname")
   @Type(type = "string")
   private String lastName;
   @Expose
-  @Column(name="middlename")
+  @Column(name = "middlename")
   @Type(type = "string")
   private String middleName;
   @Expose
-  @Column(name="address")
+  @Column(name = "address")
   @Type(type = "text")
   private String streetAddress;
   @Expose
-  @Column(name="home")
+  @Column(name = "home")
   @Type(type = "text")
   private String phoneHome;
   @Expose
-  @Column(name="phone2")
+  @Column(name = "phone2")
   @Type(type = "text")
   private String phoneHomeTwo;
   @Expose
-  @Column(name="mobile")
+  @Column(name = "mobile")
   @Type(type = "text")
   private String phoneMobile;
   @Expose
-  @Column(name="work")
+  @Column(name = "work")
   @Type(type = "text")
   private String phoneWork;
   @Expose
   @Transient
   private String allPhones;
   @Expose
-  @Column(name="email")
+  @Column(name = "email")
   @Type(type = "text")
   private String email;
   @Expose
-  @Column(name="email2")
+  @Column(name = "email2")
   @Type(type = "text")
   private String email2;
   @Expose
-  @Column(name="email3")
+  @Column(name = "email3")
   @Type(type = "text")
   private String email3;
   @Expose
@@ -72,27 +72,27 @@ public class ContactData {
   @Transient
   private String allEmails;
   @Expose
-  @Column(name="nickname")
+  @Column(name = "nickname")
   private String nickname;
   @Expose
-  @Column(name="title")
+  @Column(name = "title")
   private String title;
   @Expose
-  @Column(name="company")
+  @Column(name = "company")
   private String company;
   @Expose
-  @Column(name="fax")
+  @Column(name = "fax")
   @Type(type = "text")
   private String fax;
   @Expose
-  @Column(name="homepage")
+  @Column(name = "homepage")
   @Type(type = "text")
   private String homepage;
   @Expose
   @Transient
   private String bday;
   @Expose
-  @Column(name="bday")
+  @Column(name = "bday")
   private Byte bdayAsByte;
   @Expose
   private String bmonth;
@@ -102,22 +102,22 @@ public class ContactData {
   @Transient
   private String aday;
   @Expose
-  @Column(name="aday")
+  @Column(name = "aday")
   private Byte adayAsByte;
   @Expose
   private String amonth;
   @Expose
   private String ayear;
   @Expose
-  @Column(name="address2")
+  @Column(name = "address2")
   @Type(type = "text")
   private String address2;
   @Expose
-  @Column(name="notes")
+  @Column(name = "notes")
   @Type(type = "text")
   private String notes;
   @XStreamOmitField
-  @Column(name="photo")
+  @Column(name = "photo")
   @Type(type = "text")
 //  @Transient
   private String photo;
@@ -243,7 +243,11 @@ public class ContactData {
   }
 
   public File getPhoto() {
-    return new File(photo);
+    if (photo != null) {
+      return new File(photo);
+    } else {
+      return null;
+    }
   }
 
   public ContactData withId(int id) {
@@ -416,18 +420,21 @@ public class ContactData {
             Objects.equals(phoneHomeTwo, that.phoneHomeTwo) &&
             Objects.equals(phoneMobile, that.phoneMobile) &&
             Objects.equals(phoneWork, that.phoneWork) &&
+            Objects.equals(allPhones, that.allPhones) &&
             Objects.equals(email, that.email) &&
             Objects.equals(email2, that.email2) &&
             Objects.equals(email3, that.email3) &&
-            Objects.equals(group, that.group) &&
+            Objects.equals(allEmails, that.allEmails) &&
             Objects.equals(nickname, that.nickname) &&
             Objects.equals(title, that.title) &&
             Objects.equals(company, that.company) &&
             Objects.equals(fax, that.fax) &&
             Objects.equals(homepage, that.homepage) &&
+            Objects.equals(bday, that.bday) &&
             Objects.equals(bdayAsByte, that.bdayAsByte) &&
             Objects.equals(bmonth, that.bmonth) &&
             Objects.equals(byear, that.byear) &&
+            Objects.equals(aday, that.aday) &&
             Objects.equals(adayAsByte, that.adayAsByte) &&
             Objects.equals(amonth, that.amonth) &&
             Objects.equals(ayear, that.ayear) &&
@@ -438,9 +445,35 @@ public class ContactData {
 
   @Override
   public int hashCode() {
+    if (firstName.equals("")) firstName = null;
+    if (lastName.equals("")) lastName = null;
+    if (middleName.equals("")) middleName = null;
+    if (streetAddress.equals("")) streetAddress = null;
+    if (phoneHome.equals("")) phoneHome = null;
+    if (phoneHomeTwo.equals("")) phoneHomeTwo = null;
+    if (phoneMobile.equals("")) phoneMobile = null;
+    if (phoneWork.equals("")) phoneWork = null;
+    if (email.equals("")) email = null;
+    if (email2.equals("")) email2 = null;
+    if (email3.equals("")) email3 = null;
+    if (nickname.equals("")) nickname = null;
+    if (title.equals("")) title = null;
+    if (company.equals("")) company = null;
+    if (fax.equals("")) fax = null;
+    if (homepage.equals("")) homepage = null;
+    if (bday.equals("0")) bday = null;
+    if (bmonth.equals("-")) bmonth = null;
+    if (byear.equals("")) byear = null;
+    if (aday.equals("0")) aday = null;
+    if (amonth.equals("-")) amonth = null;
+    if (ayear.equals("")) ayear = null;
+    if (address2.equals("")) address2 = null;
+    if (notes.equals("")) notes = null;
+    if (photo.equals("")) photo = null;
+
     return Objects.hash(id, firstName, lastName, middleName, streetAddress, phoneHome, phoneHomeTwo, phoneMobile,
-            phoneWork, email, email2, email3, group, nickname, title, company, fax, homepage,
-            bdayAsByte, bmonth, byear, adayAsByte, amonth, ayear, address2, notes, photo);
+            phoneWork, email, email2, email3, nickname, title, company, fax, homepage,
+            bday, bmonth, byear, aday, amonth, ayear, address2, notes);
   }
 
   @Override
