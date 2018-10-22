@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="pl.stqa.pft.addressbook.tests.ContactEmailTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2018-10-10T09:13:20" hostname="QH-WIN-DWI" time="0.522">
-  <properties/>
-  <testcase name="testContactEmail" classname="pl.stqa.pft.addressbook.tests.ContactEmailTests" time="0.522"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

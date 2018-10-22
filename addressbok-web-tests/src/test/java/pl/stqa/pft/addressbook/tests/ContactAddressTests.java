@@ -3,7 +3,6 @@ package pl.stqa.pft.addressbook.tests;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pl.stqa.pft.addressbook.model.ContactData;
-import pl.stqa.pft.addressbook.model.GroupData;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -12,10 +11,8 @@ public class ContactAddressTests extends TestBase {
 
   @BeforeMethod
   public void ensurePreconditions() {
-//    app.goTo().contactPage();
-//    if (app.contact().all().size() == 0) {
-    if(app.db().contacts().size() == 0){
-      app.goTo().contactPage();
+    app.goTo().contactPage();
+    if (app.contact().all().size() == 0) {
       app.contact().create(new ContactData().withFirstName(app.propReader("precondition.contact.name"))
               .withLastName(app.propReader("precondition.contact.lastname"))
               .withStreetAddress(app.propReader("precondition.contact.address"))
@@ -24,7 +21,6 @@ public class ContactAddressTests extends TestBase {
               .withGroup(app.propReader("precondition.contact.group")), true);
     }
   }
-
 
   @Test
   public void testContactAddress() {
