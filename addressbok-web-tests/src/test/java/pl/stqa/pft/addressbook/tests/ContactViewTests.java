@@ -7,10 +7,12 @@ import org.testng.annotations.Test;
 import pl.stqa.pft.addressbook.model.ContactData;
 
 public class ContactViewTests extends TestBase {
+
   @BeforeMethod
   public void ensurePreconditions() {
-    app.goTo().contactPage();
-    if (app.contact().all().size() == 0) {
+    if (app.db().contacts().size() == 0) {
+      app.goTo().contactPage();
+//    if (app.contact().all().size() == 0) {
       app.contact().create(new ContactData().withFirstName(app.propReader("precondition.contact.name"))
               .withLastName(app.propReader("precondition.contact.lastname"))
               .withStreetAddress(app.propReader("precondition.contact.address"))
@@ -33,7 +35,7 @@ public class ContactViewTests extends TestBase {
     ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
 //        System.out.println(contactInfoFromViewPage);
     String mergedContactInfoFromEditForm = app.contact().mergeContactData(contactInfoFromEditForm);
-    MatcherAssert.assertThat(contactInfoFromViewPage, CoreMatchers.equalTo(mergedContactInfoFromEditForm ));
+    MatcherAssert.assertThat(contactInfoFromViewPage, CoreMatchers.equalTo(mergedContactInfoFromEditForm));
   }
 
 
