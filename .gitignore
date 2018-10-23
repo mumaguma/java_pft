@@ -28,3 +28,4 @@ addressbok-web-tests/.gradle/
 addressbok-web-tests/.idea/
 addressbok-web-tests/.build/
 addressbok-web-tests/gradle/
+*.class
