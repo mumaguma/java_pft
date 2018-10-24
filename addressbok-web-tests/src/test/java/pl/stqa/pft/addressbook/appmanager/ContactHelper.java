@@ -35,8 +35,9 @@ public class ContactHelper extends BaseHelper {
     type(By.name("email"), contactData.getEmail());
     attach(By.name("photo"), contactData.getPhoto());
 
-    if (creation) {
-      new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+    if ((creation) && (!contactData.getGroup().isEmpty())) {
+//      new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+        new Select(wd.findElement(By.xpath("//div[4]/form/select[5]"))).selectByVisibleText(contactData.getGroup());
     } else {
       Assert.assertFalse(isElementPresent(By.name("new_group")));
     }
@@ -147,7 +148,7 @@ public class ContactHelper extends BaseHelper {
     String address2 = wd.findElement(By.name("address2")).getAttribute("value");
     String notes = wd.findElement(By.name("notes")).getAttribute("value");
 
-    String bday =  wd.findElement(By.name("bday")).getAttribute("value");
+    String bday = wd.findElement(By.name("bday")).getAttribute("value");
     String bmonth = wd.findElement(By.name("bmonth")).getAttribute("value");
     String byear = wd.findElement(By.name("byear")).getAttribute("value");
     String aday = wd.findElement(By.name("aday")).getAttribute("value");
@@ -188,47 +189,47 @@ public class ContactHelper extends BaseHelper {
 
   public String mergeContactData(ContactData contact) {
     StringBuilder mergedDetails = new StringBuilder();
-    if (! contact.getFirstName().isEmpty()) mergedDetails.append(contact.getFirstName() + " ");
-    if (! contact.getMiddleName().isEmpty()) mergedDetails.append(contact.getMiddleName() + " ");
-    if (! contact.getLastName().isEmpty()) mergedDetails.append(contact.getLastName());
+    if (!contact.getFirstName().isEmpty()) mergedDetails.append(contact.getFirstName() + " ");
+    if (!contact.getMiddleName().isEmpty()) mergedDetails.append(contact.getMiddleName() + " ");
+    if (!contact.getLastName().isEmpty()) mergedDetails.append(contact.getLastName());
     if (mergedDetails.length() > 0) mergedDetails.append("\n");
-    if (! contact.getNickname().isEmpty()) mergedDetails.append(contact.getNickname() + "\n");
-    if (! contact.getTitle().isEmpty()) mergedDetails.append(contact.getTitle() + "\n");
-    if (! contact.getCompany().isEmpty()) mergedDetails.append(contact.getCompany() + "\n");
-    if (! contact.getStreetAddress().isEmpty()) mergedDetails.append(contact.getStreetAddress() + "\n");
-    if (! contact.getPhoneHome().isEmpty()) mergedDetails.append("H: " + contact.getPhoneHome() + "\n");
-    if (! contact.getPhoneMobile().isEmpty()) mergedDetails.append("M: " + contact.getPhoneMobile() + "\n");
-    if (! contact.getPhoneWork().isEmpty()) mergedDetails.append("W: " + contact.getPhoneWork() + "\n");
-    if (! contact.getFax().isEmpty()) mergedDetails.append("F: " + contact.getFax() + "\n");
-    if (! contact.getEmail().isEmpty()) mergedDetails.append(contact.getEmail() + "\n");
-    if (! contact.getEmail2().isEmpty()) mergedDetails.append(contact.getEmail2() + "\n");
-    if (! contact.getEmail3().isEmpty()) mergedDetails.append(contact.getEmail3() + "\n");
-    if (! contact.getHomepage().isEmpty()) {
-      mergedDetails.append("Homepage:\n" + contact.getHomepage().replaceFirst("^(http[s]?://)","") + "\n");
+    if (!contact.getNickname().isEmpty()) mergedDetails.append(contact.getNickname() + "\n");
+    if (!contact.getTitle().isEmpty()) mergedDetails.append(contact.getTitle() + "\n");
+    if (!contact.getCompany().isEmpty()) mergedDetails.append(contact.getCompany() + "\n");
+    if (!contact.getStreetAddress().isEmpty()) mergedDetails.append(contact.getStreetAddress() + "\n");
+    if (!contact.getPhoneHome().isEmpty()) mergedDetails.append("H: " + contact.getPhoneHome() + "\n");
+    if (!contact.getPhoneMobile().isEmpty()) mergedDetails.append("M: " + contact.getPhoneMobile() + "\n");
+    if (!contact.getPhoneWork().isEmpty()) mergedDetails.append("W: " + contact.getPhoneWork() + "\n");
+    if (!contact.getFax().isEmpty()) mergedDetails.append("F: " + contact.getFax() + "\n");
+    if (!contact.getEmail().isEmpty()) mergedDetails.append(contact.getEmail() + "\n");
+    if (!contact.getEmail2().isEmpty()) mergedDetails.append(contact.getEmail2() + "\n");
+    if (!contact.getEmail3().isEmpty()) mergedDetails.append(contact.getEmail3() + "\n");
+    if (!contact.getHomepage().isEmpty()) {
+      mergedDetails.append("Homepage:\n" + contact.getHomepage().replaceFirst("^(http[s]?://)", "") + "\n");
     }
 
 
-    if (! (contact.getBday().equals("0") && contact.getBmonth().equals("-") && contact.getByear().isEmpty())) {
+    if (!(contact.getBday().equals("0") && contact.getBmonth().equals("-") && contact.getByear().isEmpty())) {
       mergedDetails.append("Birthday ");
-      if (! contact.getBday().equals("0")) mergedDetails.append(contact.getBday() + ". ");
-      if (! contact.getBmonth().equals("-")) mergedDetails.append(contact.getBmonth() + " ");
+      if (!contact.getBday().equals("0")) mergedDetails.append(contact.getBday() + ". ");
+      if (!contact.getBmonth().equals("-")) mergedDetails.append(contact.getBmonth() + " ");
       if (!contact.getByear().isEmpty()) mergedDetails.append(contact.getByear());
       mergedDetails.append("\n");
     }
-    if (! (contact.getAday().equals("0") && contact.getAmonth().equals("-") && contact.getAyear().isEmpty())) {
+    if (!(contact.getAday().equals("0") && contact.getAmonth().equals("-") && contact.getAyear().isEmpty())) {
       mergedDetails.append("Birthday ");
       if (!contact.getAday().equals("0")) mergedDetails.append(contact.getAday() + ". ");
       if (!contact.getAmonth().equals("-")) mergedDetails.append(contact.getAmonth() + " ");
       if (!contact.getAyear().isEmpty()) mergedDetails.append(contact.getAyear());
       mergedDetails.append("\n");
     }
-    if (! contact.getAddress2().isEmpty()) mergedDetails.append(contact.getAddress2() + "\n");
-    if (! contact.getPhoneHomeTwo().isEmpty()) mergedDetails.append("P: " + contact.getPhoneHomeTwo() + "\n");
-    if (! contact.getNotes().isEmpty()) mergedDetails.append(contact.getNotes() + "\n");
+    if (!contact.getAddress2().isEmpty()) mergedDetails.append(contact.getAddress2() + "\n");
+    if (!contact.getPhoneHomeTwo().isEmpty()) mergedDetails.append("P: " + contact.getPhoneHomeTwo() + "\n");
+    if (!contact.getNotes().isEmpty()) mergedDetails.append(contact.getNotes() + "\n");
     String mergeddetailsstring = mergedDetails.toString();
-    mergeddetailsstring  = mergeddetailsstring.replaceAll("(?m)^\\s*$[\n\r]{1,}", "");
+    mergeddetailsstring = mergeddetailsstring.replaceAll("(?m)^\\s*$[\n\r]{1,}", "");
 //  System.out.println(mergeddetailsstring);
-  return mergeddetailsstring;
+    return mergeddetailsstring;
   }
 
 
