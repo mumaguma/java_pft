@@ -17,14 +17,14 @@ public class ContactModificationTests extends TestBase {
       app.goTo().contactPage();
 //    if (app.contact().all().size() == 0) {
       app.contact().create(new ContactData().withFirstName(app.propReader("precondition.contact.name"))
-              .withLastName(app.propReader("precondition.contact.lastname"))
-              .withStreetAddress(app.propReader("precondition.contact.address"))
-              .withPhoneHome(app.propReader("precondition.contact.phone"))
-              .withEmail(app.propReader("precondition.contact.email"))
-              .withGroup(app.propReader("precondition.contact.group")), true);
+                      .withLastName(app.propReader("precondition.contact.lastname"))
+                      .withStreetAddress(app.propReader("precondition.contact.address"))
+                      .withPhoneHome(app.propReader("precondition.contact.phone"))
+                      .withEmail(app.propReader("precondition.contact.email"))
+//              .withGroup(app.propReader("precondition.contact.group")
+        , true);
     }
   }
-
 
   @Test
   public void testContactModification() {
@@ -37,7 +37,8 @@ public class ContactModificationTests extends TestBase {
             .withStreetAddress(app.propReader("modified.contact.address"))
             .withPhoneHome(app.propReader("modified.contact.phone"))
             .withEmail(app.propReader("modified.contact.email"))
-            .withGroup(app.propReader("modified.contact.group"));
+//            .withGroup(app.propReader("modified.contact.group"))
+            ;
     app.contact().modify(contact);
 //    assertThat(app.contact().count(), equalTo(before.size()));
 //    Contacts after = app.contact().all();

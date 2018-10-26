@@ -35,10 +35,16 @@ public class ContactHelper extends BaseHelper {
     type(By.name("email"), contactData.getEmail());
     attach(By.name("photo"), contactData.getPhoto());
 
-    if ((creation) && (!contactData.getGroup().isEmpty())) {
+    if (creation) {
+      if (contactData.getGroups().size() > 0) {
 //      new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
-        new Select(wd.findElement(By.xpath("//div[4]/form/select[5]"))).selectByVisibleText(contactData.getGroup());
-    } else {
+//        new Select(wd.findElement(By.xpath("//div[4]/form/select[5]"))).selectByVisibleText(contactData.getGroup());
+//      new Select(wd.findElement(By.name("new_group"))).selectByIndex(1);
+        Assert.assertTrue(contactData.getGroups().size() == 1);
+        new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroups().iterator().next().getName());
+      }
+    }
+    else {
       Assert.assertFalse(isElementPresent(By.name("new_group")));
     }
 

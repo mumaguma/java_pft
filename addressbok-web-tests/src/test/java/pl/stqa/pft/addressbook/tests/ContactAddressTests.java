@@ -19,7 +19,8 @@ public class ContactAddressTests extends TestBase {
               .withStreetAddress(app.propReader("precondition.contact.address"))
               .withPhoneHome(app.propReader("precondition.contact.phone"))
               .withEmail(app.propReader("precondition.contact.email"))
-              .withGroup(app.propReader("precondition.contact.group")), true);
+//              .withGroup(app.propReader("precondition.contact.group")), true)
+              , true);
     }
   }
 
