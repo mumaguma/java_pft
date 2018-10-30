@@ -29,3 +29,7 @@ addressbok-web-tests/.idea/
 addressbok-web-tests/.build/
 addressbok-web-tests/gradle/
 *.class
+sandbox/.gradle/4.8.1/fileChanges/last-build.bin
+sandbox/.gradle/4.8.1/fileHashes/fileHashes.bin
+sandbox/.gradle/4.8.1/fileHashes/fileHashes.lock
+sandbox/.gradle/vcsWorkingDirs/gc.properties

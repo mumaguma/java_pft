@@ -54,7 +54,7 @@ public class ContactCreationTests extends TestBase {
   @Test
   public void testBadContactCreation() {
     Groups groups = app.db().groups();
-    File photo = new File("src/test/resources/avatar.png")
+    File photo = new File("src/test/resources/avatar.png");
     ContactData contact = new ContactData().withFirstName(app.propReader("create.contact.bad.firstname"))
             .withLastName(app.propReader("modified.contact.lastname"))
             .withStreetAddress(app.propReader("modified.contact.address"))
