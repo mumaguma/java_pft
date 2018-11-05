@@ -1,19 +1,18 @@
 package pl.stqa.pft.mantis.appmanager;
 
-import org.openqa.selenium.WebDriver;
-import pl.stqa.pft.addressbook.appmanager.ApplicationManager;
+import org.openqa.selenium.By;
 
-public class RegistrationHelper {
+public class RegistrationHelper extends HelperBase {
 
-  private final ApplicationManager app;
-  private WebDriver wd;
 
   public RegistrationHelper(ApplicationManager app) {
-    this.app = app;
-    wd = app.getDriver();
+    super(app);
   }
 
   public void start(String username, String email) {
     wd.get(app.propReader("web.baseUrl") + "/signup_page.php");
+    type(By.name("username"), username);
+    type(By.name("email"), email);
+    click(By.xpath("//input[@class='button']"));
   }
 }

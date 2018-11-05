@@ -1,4 +1,4 @@
-package pl.stqa.pft.addressbook.appmanager;
+package pl.stqa.pft.mantis.appmanager;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -6,16 +6,12 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.BrowserType;
-import pl.stqa.pft.mantis.appmanager.FtpHelper;
-import pl.stqa.pft.mantis.appmanager.HttpSession;
-import pl.stqa.pft.mantis.appmanager.RegistrationHelper;
 
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
-import java.util.regex.MatchResult;
 
 public class ApplicationManager {
 
@@ -26,6 +22,7 @@ public class ApplicationManager {
   private String browser;
   private RegistrationHelper registrationHelper;
   private FtpHelper ftp;
+  private MailHelper mailHelper;
 
   public ApplicationManager(String browser) {
     this.browser = browser;
@@ -83,4 +80,13 @@ public class ApplicationManager {
     }
     return wd;
   }
+
+
+  public MailHelper mail() {
+    if (mailHelper == null){
+      mailHelper = new MailHelper(this);
+    }
+    return mailHelper;
+  }
+
 }

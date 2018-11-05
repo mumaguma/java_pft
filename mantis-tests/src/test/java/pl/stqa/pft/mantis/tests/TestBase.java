@@ -3,7 +3,7 @@ package pl.stqa.pft.mantis.tests;
 import org.openqa.selenium.remote.BrowserType;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
-import pl.stqa.pft.addressbook.appmanager.ApplicationManager;
+import pl.stqa.pft.mantis.appmanager.ApplicationManager;
 
 import java.io.File;
 import java.io.IOException;
