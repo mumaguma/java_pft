@@ -1,4 +1,4 @@
-package pl.stqa.pft.mantis.appmanager;
+package pl.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
