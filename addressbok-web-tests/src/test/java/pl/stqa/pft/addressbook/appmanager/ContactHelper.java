@@ -5,8 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
-import pl.stqa.pft.addressbook.model.ContactData;
-import pl.stqa.pft.addressbook.model.Contacts;
+import pl.stqa.pft.addressbook.model.*;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -110,6 +109,34 @@ public class ContactHelper extends BaseHelper {
     returnToMainPage();
   }
 
+  public void addToGroup(ContactData contact, GroupData group) {
+    select(contact.getId());
+    submitContactGroupAddition(group);
+  }
+
+  public void removeFromGroup(GroupMemberData groupDeleteFrom) {
+    selectGroup(groupDeleteFrom);
+    selectContact();
+    submitContactGroupRemoval();
+  }
+
+  private void selectGroup(GroupMemberData toDelete) {
+    String groupValue = String.valueOf(toDelete.getGroupId());
+    new Select(wd.findElement(By.name("group"))).selectByValue(groupValue);
+  }
+
+  private void selectContact() {
+    click(By.name("selected[]"));
+  }
+
+  private void submitContactGroupAddition(GroupData group) {
+    new Select(wd.findElement(By.name("to_group"))).selectByVisibleText(group.getName());
+    click(By.name("add"));
+  }
+
+  private void submitContactGroupRemoval() {
+    click(By.name("remove"));
+  }
 
   private Contacts contactCache = null;
 
@@ -237,6 +264,8 @@ public class ContactHelper extends BaseHelper {
 //  System.out.println(mergeddetailsstring);
     return mergeddetailsstring;
   }
+
+
 
 
 }

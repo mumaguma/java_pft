@@ -5,10 +5,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import pl.stqa.pft.addressbook.model.ContactData;
-import pl.stqa.pft.addressbook.model.Contacts;
-import pl.stqa.pft.addressbook.model.GroupData;
-import pl.stqa.pft.addressbook.model.Groups;
+import pl.stqa.pft.addressbook.model.*;
 
 import java.util.List;
 import java.util.TimeZone;
@@ -50,6 +47,15 @@ public class DbHelper {
     session.getTransaction().commit();
     session.close();
     return new Contacts(result);
+  }
+
+  public GroupMembers groupsContacts() {
+    Session session = sessionFactory.openSession();
+    session.beginTransaction();
+    List<GroupMemberData> result = session.createQuery("from GroupMemberData").list();
+    session.getTransaction().commit();
+    session.close();
+    return new GroupMembers(result);
   }
 
 }

@@ -433,14 +433,40 @@ public class ContactData {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     ContactData that = (ContactData) o;
-    return id == that.id &&
-            Objects.equals(firstName, that.firstName) &&
-            Objects.equals(lastName, that.lastName);
+//    return id == that.id &&
+//            Objects.equals(firstName, that.firstName) &&
+//            Objects.equals(lastName, that.lastName);
+    if (id != that.id) return false;
+    if ((firstName != null) && (!firstName.equals(that.firstName))){
+      return false;
+    } else if ((firstName == null) && (that.firstName != null) ) {
+      return false;
+    }
+    if ((lastName != null) && (!lastName.equals(that.lastName))){
+      return false;
+    } else if ((lastName == null) && (that.lastName != null) ) {
+      return false;
+    }
+    if ((streetAddress != null) && (!streetAddress.equals(that.streetAddress))){
+      return false;
+    } else if ((streetAddress == null) && (that.streetAddress != null) ) {
+      return false;
+    }
+    if ((phoneMobile != null) && (!phoneMobile.equals(that.phoneMobile))){
+      return false;
+    } else if ((phoneMobile == null) && (that.phoneMobile != null) ) {
+      return false;
+    }
+    if (email == null) {
+      return (that.email == null);
+    } else {
+      return (email.equals(that.email));
+    }
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, firstName, lastName);
+    return Objects.hash(id, firstName, lastName, streetAddress, phoneMobile, email);
   }
 
   public ContactData inGroup(GroupData group) {
